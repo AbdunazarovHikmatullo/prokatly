@@ -1,0 +1,93 @@
+.form-wrapper {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #111111;
+  border: 1px solid #232323;
+  border-radius: 12px;
+}
+
+.form-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.form-subtitle {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #bfbfbf;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #bfbfbf;
+}
+
+.form-input input,
+.form-input select,
+.form-input textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #2f2f2f;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #ffffff;
+  background: #1a1a1a;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-input input:focus,
+.form-input select:focus,
+.form-input textarea:focus {
+  border-color: #323232;
+  background: #272727;
+  outline: none;
+}
+
+.checkbox-label {
+  font-size: 0.9rem;
+  color: #bfbfbf;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.form-error {
+  font-size: 0.85rem;
+  color: #ff4d4f;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #2f2f2f;
+  background: #1a1a1a;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-submit:hover {
+  background: #232323;
+  border-color: #323232;
+}

@@ -1,0 +1,90 @@
+:root {
+  --bg-color: #000;
+  --text-color: #bfbfbf;
+  --border-color: #232323;
+  --accent-color: #ffff;
+}
+
+.product-page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+.breadcrumbs a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.breadcrumbs span {
+  color: var(--accent-color);
+}
+
+.product-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.image-gallery {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gallery-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity .2s, border .2s;
+}
+.gallery-img.active,
+.gallery-img:hover {
+  opacity: 1;
+  border-color: var(--accent-color);
+}
+
+.product-info {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--text-color);
+}
+
+.product-title {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.product-price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.product-desc {
+  line-height: 1.5;
+}
+
+.btn-action {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  color: #000;
+  background: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-action:hover {
+  background: #e5e5e5;
+}

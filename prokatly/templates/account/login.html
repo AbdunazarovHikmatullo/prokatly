@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'account/css/auth.css' %}">
+</head>
+<body>
+    <main>
+        <div class="login-container">
+            <div class="con-left">
+                <a href="{% url 'index' %}" class="home-link">
+                    На главную
+                </a>
+                </div>
+            <div class="con-right">
+                <h2 class="form-title">Добро пожаловать</h2>
+                <form action="" method="post" class="form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.password.id_for_label }}">Пароль</label>
+                        {{ form.password }}
+                    </div>
+                    <button type="submit" class="btn-submit">Войти</button>
+                </form>
+                <div class="login-link">
+                    Нет аккаунта <a href="{% url 'register' %}">Регистрация</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

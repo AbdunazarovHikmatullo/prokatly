@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box; /* Это критически важно для предотвращения переполнения */
+    /* outline: 1px solid red;  Убираем для чистого вида */
+}
+
+html, body {
+    height: 100%;
+    min-height: 100vh;
+    /* Убираем display: flex; с body, чтобы избежать конфликта */
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex; /* Добавляем flexbox для центрирования main */
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    /* Добавляем overflow-x: hidden; чтобы избежать горизонтальной прокрутки */
+    overflow-x: hidden; 
+}
+
+.login-container {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.con-left {
+    flex-basis: 70%; /* Возвращаем 70% для десктопа */
+    background: linear-gradient(to right, var(--neutral-950),var(--neutral-800));
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.con-left .home-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    border: 1px dotted var(--border);
+    padding: 15px 10px; 
+    border-radius: 10px;
+}
+
+.con-left .home-link:hover {
+    color: var(--text-color);
+}
+
+.con-right {
+    flex-basis: 30%; /* Возвращаем 30% для десктопа */
+    background-color: var(--bg-color);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.form {
+    width: 100%;
+    max-width: 350px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--border);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover {
+    background-color: var(--bg-color);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+.login-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.login-link a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    body, main {
+        display: block; /* Изменяем display на block для лучшей адаптации */
+    }
+
+    .login-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+
+    .con-left {
+        display: none;
+    }
+
+    .con-right {
+        flex-basis: 100%;
+        padding: 40px 20px;
+        width: 100%; 
+    }
+}
