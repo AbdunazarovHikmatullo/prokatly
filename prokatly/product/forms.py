@@ -21,8 +21,6 @@ class CreateProductForm(forms.ModelForm):
             'location',
             'is_available',
             'available_status',
-            'status',
-            'is_vip',
             'category',
         ]
         widgets = {

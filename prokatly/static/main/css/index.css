@@ -1,7 +1,6 @@
 
 .categories-con{
     height: auto;
-    border: 1px solid var(--border);
     border-radius: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit , minmax(150px, 1fr));

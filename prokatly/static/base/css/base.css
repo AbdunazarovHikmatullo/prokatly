@@ -50,9 +50,13 @@ body{
 }
 
 header{
+    position: sticky;
+    top: 0px;
     padding: 5px 10px;
     min-height: 30px;
     height: 65px;
+    z-index: 999;
+    background-color: var(--bg-color);
 }
 
 header .container{
@@ -123,7 +127,7 @@ main{
     max-width: 1300px;
     margin: 0 auto;
     padding: 10px 5px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 nav a{
     text-decoration: none;
@@ -255,7 +259,7 @@ footer .grid-auto-con-footer{
     margin: 0 auto;
     padding: 40px 0px;
     display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(300px , 1fr));
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .grid-auto-con-footer .con {
@@ -329,6 +333,9 @@ footer .con ul a{
         display: none;
     }
     .useAuth{
+        display: none;
+    }
+    footer {
         display: none;
     }
 

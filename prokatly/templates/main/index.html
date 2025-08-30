@@ -27,7 +27,7 @@
                     </a>
                     <div class="card-bottom">
                         <h1 class="card-price">
-                            {{product.price}}с  <span class="mini-badge">/ {{product.price_period}}</span>
+                            {{product.price}}с  <span class="mini-badge">/ {{product.get_price_period_display}}</span>
                         </h1>
                         <a href="{% url 'product_detail' product.pk %}" class="card-title"> {{product.title}} </a>
                         <p class="card-desc">

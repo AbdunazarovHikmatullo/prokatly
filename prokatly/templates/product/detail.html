@@ -6,35 +6,71 @@
 {% endblock %}
 
 {% block content %}
-<main class="product-page">
-    <div class="breadcrumbs">
-        <a href="{% url 'index' %}">Главная</a> / <a href="{% url 'product_list' %}">Каталог</a> / <span>{{ product.title
-            }}</span>
-    </div>
-    <div class="product-content">
-        <div class="image-gallery">
-            {% for img in product.images.all %}
-            <img src="{{ img.image.url }}" alt="{{ product.title }}"
-                class="gallery-img {% if forloop.first %}active{% endif %}">
+<div class="breadcrumbs">
+    <a href="{% url 'index' %}">Главная</a> /
+    <a href="{% url 'product_list' %}">Каталог</a> /
+    <span>{{ product.title }}</span>
+</div>
+
+<div class="product-content">
+    <div class="image-gallery">
+        {% if product.images.first %}
+        <!-- Первое изображение товара -->
+        <img src="{{ product.images.first.image.url }}" alt="{{ product.title }}">
+        {% else %}
+        <!-- Если нет изображений, можно показать картинку по умолчанию -->
+        <img src="{% static 'path/to/default-image.jpg' %}" alt="Изображение не доступно">
+        {% endif %}
+
+        <div class="gallery_bottom">
+            {% for image in product.images.all %}
+            <button class="btn-gallery">
+                <img src="{{ image.image.url }}" alt="{{ product.title }}">
+            </button>
             {% endfor %}
         </div>
-        <div class="product-info">
-            <h1 class="product-title">{{ product.title }}</h1>
-            <p class="product-price">{{ product.price }} {{ product.get_price_period_display }}</p>
-            <p class="product-desc">{{ product.desc }}</p>
-            <button class="btn-action">Арендовать</button>
-        </div>
     </div>
-</main>
 
-
-<script>
-    document.querySelectorAll('.gallery-img').forEach(img => {
-        img.addEventListener('click', () => {
-            document.querySelectorAll('.gallery-img').forEach(i => i.classList.remove('active'));
-            img.classList.add('active');
-        });
-    });
-
-</script>
+    <div class="product-info">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <p class="product-price">{{ product.price }} {{ product.get_price_period_display }}</p>
+        <p class="product-desc">{{ product.desc }}</p>
+        <button class="btn-action">Арендовать</button>
+    </div>
+</div>
+<h1 class="text-title"> Другие товары этого продавца</h1>
+<div class="products-grid">
+    <div class="products-grid">
+        {% for oproduct in products_by_owner %}
+        <div class="card">
+            <a href="{% url 'product_detail' oproduct.pk %}" class="card-top">
+                {% if oproduct.images.first %}
+                <img src="{{ oproduct.images.first.image.url }}" alt="{{ oproduct.title }}">
+                {% else %}
+                <img src="{% static 'path/to/default.jpg' %}" alt="{{ oproduct.title }}">
+                {% endif %}
+            </a>
+            <div class="card-bottom">
+                <h1 class="card-price">
+                    {{ oproduct.price }}с <span class="mini-badge">/ {{ oproduct.price_period }}</span>
+                </h1>
+                <a href="{% url 'product_detail' oproduct.pk %}" class="card-title">{{ oproduct.title }}</a>
+                <p class="card-desc">
+                    <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.877075 7.49991C0.877075 3.84222 3.84222 0.877075 7.49991 0.877075C11.1576 0.877075 14.1227 3.84222 14.1227 7.49991C14.1227 11.1576 11.1576 14.1227 7.49991 14.1227C3.84222 14.1227 0.877075 11.1576 0.877075 7.49991ZM7.49991 1.82708C4.36689 1.82708 1.82708 4.36689 1.82708 7.49991C1.82708 10.6329 4.36689 13.1727 7.49991 13.1727C10.6329 13.1727 13.1727 10.6329 13.1727 7.49991C13.1727 4.36689 10.6329 1.82708 7.49991 1.82708Z"
+                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                    {{ oproduct.location }}
+                </p>
+            </div>
+        </div>
+        {% empty %}
+        <p>У этого продавца больше нет других товаров.</p>
+        {% endfor %}
+    </div>
+</div>
+{% block js_file %}
+<script src="{% static 'product/js/detail.js' %}"></script>
+{% endblock %}
 {% endblock %}

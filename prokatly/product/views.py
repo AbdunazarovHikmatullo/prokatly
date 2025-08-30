@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CreateProductForm, ProductImageFormSet
 from .models import Product
+from account.models import User
 
 
 def create_product(request):
@@ -26,8 +27,11 @@ def create_product(request):
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
+    owner = product.owner
+    products_by_owner = Product.objects.filter(owner=owner).exclude(pk=pk)
     context ={
-        'product':product
+        'product':product,
+        'products_by_owner':products_by_owner,
     }
     return render(request, 'product/detail.html', context)
 
