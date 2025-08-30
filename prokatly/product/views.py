@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CreateProductForm, ProductImageFormSet
 from .models import Product
+
+
 def create_product(request):
     if request.method == "POST":
         form = CreateProductForm(request.POST)
@@ -11,7 +13,7 @@ def create_product(request):
             product.save()
             formset.instance = product
             formset.save()
-            return redirect("product_detail", pk=product.pk)
+            return redirect("product_detail", product.pk)
     else:
         form = CreateProductForm()
         formset = ProductImageFormSet()
@@ -22,8 +24,8 @@ def create_product(request):
     })
 
 
-def product_detail(request, id):
-    product = get_object_or_404(Product, id=id)
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
     context ={
         'product':product
     }
